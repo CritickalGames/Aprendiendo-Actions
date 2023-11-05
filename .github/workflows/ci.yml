@@ -15,7 +15,7 @@ jobs:
 
       - name: Ejecutar MAIN.py
         run: |
-          cd 
+          cd ReadmeGenerator
           pip install -r requirements.txt
           python main.py
           cd ..
