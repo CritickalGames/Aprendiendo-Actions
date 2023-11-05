@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Ejecutar MAIN.py
-        run: |
-          cd ReadmeGenerator
-          pip install -r requirements.txt
-          python main.py
-          cd ..
+        - uses: actions/checkout@v2
+        - uses: actions/setup-python@v2
+          with:
+            python-version: '3.11.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+            architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+  
+        # Runs a set of commands using the runners shell
+        - name: Generate static files
+          run: |
+            cd ReadmeGenerator
+            pip install -r requirements.txt
+            python main.py
+            cd ..
